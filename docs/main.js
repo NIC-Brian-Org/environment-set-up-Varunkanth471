@@ -1,16 +1,33 @@
-console.log('main.js');
+console.log("main.js");
 (() => {
-    console.log('Here we are!')
-    window.addEventListener("load", (event) => {
-        const multiplier = document.getElementById( 'multiplier' );
-        const multiplicand = document.getElementById( 'multiplicand' );
-        const product = document.getElementById( 'product' );
+  window.addEventListener("load", () => {
+    const number1 = document.getElementById("number1");
+    const number2 = document.getElementById("number2");
+    const operation = document.getElementById("operation");
+    const result = document.getElementById("result");
 
-        const update = () => {
-            product.innerHTML = parseFloat( multiplier.value ) * parseFloat( multiplicand.value );
-        };
+    const update = () => {
+      const val1 = parseFloat(number1.value);
+      const val2 = parseFloat(number2.value);
+      let output = 0;
 
-        multiplier.addEventListener("input", update);
-        multiplicand.addEventListener("input", update);
-    });      
+      if (operation.value === "add") {
+        output = val1 + val2;
+      } else if (operation.value === "subtract") {
+        output = val1 - val2;
+      } else if (operation.value === "multiply") {
+        output = val1 * val2;
+      } else if (operation.value === "divide") {
+        output = val1 / val2;
+      }
+
+      result.innerHTML = output;
+    };
+
+    number1.addEventListener("input", update);
+    number2.addEventListener("input", update);
+    operation.addEventListener("change", update);
+
+    update(); // run once on load
+  });
 })();
