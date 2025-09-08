@@ -9,25 +9,16 @@ console.log("main.js");
     const update = () => {
       const val1 = parseFloat(number1.value);
       const val2 = parseFloat(number2.value);
-      let output = 0;
-
-      if (operation.value === "add") {
-        output = val1 + val2;
-      } else if (operation.value === "subtract") {
-        output = val1 - val2;
-      } else if (operation.value === "multiply") {
-        output = val1 * val2;
-      } else if (operation.value === "divide") {
-        output = val1 / val2;
-      }
-
-      result.innerHTML = output;
+      if (operation.value === "add") result.innerHTML = val1 + val2;
+      if (operation.value === "subtract") result.innerHTML = val1 - val2;
+      if (operation.value === "multiply") result.innerHTML = val1 * val2;
+      if (operation.value === "divide") result.innerHTML = val1 / val2;
     };
 
     number1.addEventListener("input", update);
     number2.addEventListener("input", update);
     operation.addEventListener("change", update);
 
-    update(); // run once on load
+    update();
   });
 })();
